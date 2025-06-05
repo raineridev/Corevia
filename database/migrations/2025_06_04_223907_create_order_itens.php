@@ -13,11 +13,11 @@ return new class extends Migration
     {
         Schema::create('order_itens', function (Blueprint $table) {
             $table->id();
-            $table->integer('quantity', 1);
-            $table->foreignId('product_id', 0)
+            $table->integer('quantity')->default(1);
+            $table->foreignId('product_id')
                 ->constrained()
                 ->onDelete('cascade');
-            $table->foreignId('order_id', 0)
+            $table->foreignId('order_id')
                 ->constrained()
                 ->onDelete('cascade');
             $table->timestamps();
