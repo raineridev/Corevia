@@ -11,13 +11,15 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('vouchers', function (Blueprint $table) {
+        Schema::create('voucher_rule_map', function (Blueprint $table) {
             $table->id();
-            $table->string('name', 255);
-            $table->string('code', 255);
-            $table->timestamp('added_at', precision: 0);
+            $table->foreignId('voucher_id')
+                ->constrained()
+                ->onDelete('cascade');
+            $table->foreignId('voucher_rule_id')
+                ->constrained()
+                ->onDelete('cascade');
             $table->timestamps();
-            $table->softDeletes('deleted_at', precision: 0);
         });
     }
 
@@ -26,6 +28,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('vouchers');
+        Schema::dropIfExists('voucher_rule_map');
     }
 };
