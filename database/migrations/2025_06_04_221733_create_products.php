@@ -16,6 +16,7 @@ return new class extends Migration
             $table->boolean('active')->default(true);
             $table->string('name', 255);
             $table->decimal('price', total: 10, places : 2);
+            $table->integer('stock')->default(1);
             $table->timestamps();
         });
     }
