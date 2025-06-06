@@ -2,6 +2,7 @@
 
 namespace App\Http\Requests;
 
+use App\DTOs\Products\ProductData;
 use Illuminate\Foundation\Http\FormRequest;
 
 class StoreProductRequest extends FormRequest
@@ -23,8 +24,21 @@ class StoreProductRequest extends FormRequest
     {
         return [
             'name' => 'string|required|max:255|',
-            'price' => 'decimal:10,2|required',
+            'active' => 'boolean',
+            'price' =>  "required |numeric|regex:/^\d+(\.\d{1,2})?$/|gt:0",
             'stock' => 'integer|required',
         ];
+    }
+
+    public function toDTO() : ProductData
+    {
+        $data = $this->validated();
+
+        return new ProductData(
+            name: $data['name'],
+            active: $data['active'] ?? true,
+            price: $data['price'],
+            stock: $data['stock'],
+        );
     }
 }
