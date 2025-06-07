@@ -2,13 +2,12 @@
 
 namespace App\Http\Services;
 
-use App\DTOs\BaseDTO;
 use App\DTOs\Products\ProductData;
-use App\Http\Repositories\Eloquent\ProductRepository;
+use App\Http\Repositories\RepositoryInterface;
 
 class ProductService
 {
-    public function __construct(private ProductRepository $productRepository) {}
+    public function __construct(private RepositoryInterface $productRepository) {}
     public function all()
     {
         return $this->productRepository->all();
