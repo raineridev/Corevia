@@ -10,7 +10,7 @@ class VoucherData extends BaseDTO
         public string $name,
         public string $code,
         public int $quantity,
-        public float $minimum_value,
+        public float $minimumValue,
         public string $startAt,
         public int $endAt,
     ) {}
