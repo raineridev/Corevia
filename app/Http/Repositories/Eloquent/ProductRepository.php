@@ -5,14 +5,16 @@ namespace App\Http\Repositories\Eloquent;
 use App\DTOs\BaseDTO;
 use App\Models\Product;
 use App\Http\Repositories\RepositoryInterface;
+use Illuminate\Support\Collection;
+
 class ProductRepository implements RepositoryInterface
 {
-    public function all()
+    public function all(): Collection
     {
         return Product::all();
     }
 
-    public function create(BaseDTO $data)
+    public function create(BaseDTO $data) :  Product
     {
         return Product::create([
             'name' => $data->name,
@@ -22,19 +24,19 @@ class ProductRepository implements RepositoryInterface
         ]);
     }
 
-    public function find(int $id)
+    public function find(int $id) : ?Product
     {
         return Product::findOrFail($id);
     }
 
-    public function update(int $id, array $data)
+    public function update(int $id, array $data) :  Product
     {
         $product = Product::findOrFail($id);
-        $product->update((array) $data);
+        $product->update($data);
         return $product;
     }
 
-    public function delete(int $id)
+    public function delete(int $id) : void
     {
         $product = Product::findOrFail($id);
         $product->delete();
