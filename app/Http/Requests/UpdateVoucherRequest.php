@@ -22,9 +22,13 @@ class UpdateVoucherRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'name' => 'string|max:255|',
-            'code' => 'string|max:255',
-            'end_at' => '|array|in_array_keys:date,timezone'
+            'active' => 'boolean',
+            'name' => 'max:255|',
+            'code' => 'max:255',
+            'quantity' => 'integer',
+            'minimum_value' => 'integer',
+            'start_at' => 'date',
+            'end_at' =>  'date',
         ];
     }
 }

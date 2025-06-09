@@ -2,6 +2,8 @@
 
 namespace App\Http\Requests;
 
+use App\DTOs\VoucherData;
+use Illuminate\Contracts\Validation\ValidationRule;
 use Illuminate\Foundation\Http\FormRequest;
 
 class StoreVoucherRequest extends FormRequest
@@ -17,14 +19,32 @@ class StoreVoucherRequest extends FormRequest
     /**
      * Get the validation rules that apply to the request.
      *
-     * @return array<string, \Illuminate\Contracts\Validation\ValidationRule|array<mixed>|string>
+     * @return array<string, ValidationRule|array<mixed>|string>
      */
     public function rules(): array
     {
         return [
+            'active' => 'required|boolean',
             'name' => 'required|max:255|',
             'code' => 'required|max:255',
-            'end_at' => 'required|array|in_array_keys:date,timezone'
+            'quantity' => 'required|integer',
+            'minimum_value' => 'required|integer',
+            'start_at' => 'required|date',
+            'end_at' =>  'required|date',
         ];
+    }
+
+    public function toDTO() : VoucherData
+    {
+        $data = $this->validated();
+
+        return new VoucherData(
+            name: $data['name'],
+            code: $data['code'],
+            quantity: $data['quantity'],
+            minimumValue: $data['minimum_value'],
+            startAt: $data['start_at'],
+            endAt: $data['end_at'],
+    );
     }
 }
