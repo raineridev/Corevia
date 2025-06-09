@@ -5,15 +5,18 @@ namespace App\Http\Controllers;
 use App\Models\Voucher;
 use App\Http\Requests\StoreVoucherRequest;
 use App\Http\Requests\UpdateVoucherRequest;
-
+use App\Http\Services\VoucherService;
 class VoucherController extends Controller
 {
+    public function __construct(VoucherService $voucherService) {}
+
+
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        //
+        return $this->voucherService->all();
     }
 
     /**
@@ -21,7 +24,8 @@ class VoucherController extends Controller
      */
     public function store(StoreVoucherRequest $request)
     {
-        //
+        $voucher = $this->voucherService->store($request->toDTO());
+        return $voucher;
     }
 
     /**
@@ -29,7 +33,8 @@ class VoucherController extends Controller
      */
     public function show(Voucher $voucher)
     {
-        //
+        $voucher = $this->voucherService->find($voucher->id);
+        return $voucher;
     }
 
     /**
@@ -37,7 +42,8 @@ class VoucherController extends Controller
      */
     public function update(UpdateVoucherRequest $request, Voucher $voucher)
     {
-        //
+        $voucher = $this->voucherService->find($voucher->id, $request);
+        return $voucher;
     }
 
     /**
@@ -45,6 +51,7 @@ class VoucherController extends Controller
      */
     public function destroy(Voucher $voucher)
     {
-        //
+        $voucher = $this->voucherService->delete($voucher->id);
+        return $voucher;
     }
 }
