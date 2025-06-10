@@ -4,8 +4,8 @@ namespace App\Http\Repositories\Eloquent;
 
 use App\DTOs\BaseDTO;
 use App\Models\Voucher;
-use App\Http\Repositories\RepositoryInterface;
 use Illuminate\Support\Collection;
+use App\Http\Repositories\RepositoryInterface;
 
 class VoucherRepository implements RepositoryInterface
 {

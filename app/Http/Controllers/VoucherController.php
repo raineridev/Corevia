@@ -3,9 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Models\Voucher;
-use App\Http\Requests\StoreVoucherRequest;
-use App\Http\Requests\UpdateVoucherRequest;
+use App\Http\Requests\Voucher\StoreVoucherRequest;
+use App\Http\Requests\Voucher\UpdateVoucherRequest;
 use App\Http\Services\VoucherService;
+
 class VoucherController extends Controller
 {
     public function __construct(VoucherService $voucherService) {}
