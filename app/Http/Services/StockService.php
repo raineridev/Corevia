@@ -8,6 +8,7 @@ use App\Http\Repositories\Eloquent\VariantRepository;
 class VariantService
 {
     public function __construct(private VariantRepository $variantRepository) {}
+
     public function all()
     {
         return $this->variantRepository->all();
@@ -22,6 +23,7 @@ class VariantService
     {
         return $this->variantRepository->find($id);
     }
+
     public function update(int $id, array $data)
     {
         return $this->variantRepository->update($id, $data);

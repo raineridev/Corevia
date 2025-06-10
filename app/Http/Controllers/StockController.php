@@ -2,14 +2,13 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Stock;
 use App\Http\Requests\StoreStockRequest;
 use App\Http\Requests\UpdateStockRequest;
+use App\Models\Stock;
 
 class StockController extends Controller
 {
     public function __construct(StockService $stockService) {}
-
 
     /**
      * Display a listing of the resource.
@@ -25,6 +24,7 @@ class StockController extends Controller
     public function store(StoreStockRequest $request)
     {
         $stock = $this->stockService->store($request->toDTO());
+
         return $stock;
     }
 
@@ -34,6 +34,7 @@ class StockController extends Controller
     public function show(Stock $stock)
     {
         $stock = $this->stockService->find($stock->id);
+
         return $stock;
     }
 
@@ -43,6 +44,7 @@ class StockController extends Controller
     public function update(UpdateStockRequest $request, Voucher $stock)
     {
         $stock = $this->stockService->find($stock->id, $request);
+
         return $stock;
     }
 
@@ -52,6 +54,7 @@ class StockController extends Controller
     public function destroy(Stock $stock)
     {
         $stock = $this->stockService->delete($stock->id);
+
         return $stock;
     }
 }

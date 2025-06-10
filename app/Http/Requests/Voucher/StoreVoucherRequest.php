@@ -30,11 +30,11 @@ class StoreVoucherRequest extends FormRequest
             'quantity' => 'required|integer',
             'minimum_value' => 'required|integer',
             'start_at' => 'required|date',
-            'end_at' =>  'required|date',
+            'end_at' => 'required|date',
         ];
     }
 
-    public function toDTO() : VoucherData
+    public function toDTO(): VoucherData
     {
         $data = $this->validated();
 
@@ -45,6 +45,6 @@ class StoreVoucherRequest extends FormRequest
             minimumValue: $data['minimum_value'],
             startAt: $data['start_at'],
             endAt: $data['end_at'],
-    );
+        );
     }
 }

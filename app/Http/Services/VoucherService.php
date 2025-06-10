@@ -2,7 +2,6 @@
 
 namespace App\Http\Services;
 
-use App\Models\Product;
 use App\DTOs\Products\ProductData;
 
 class VoucherService

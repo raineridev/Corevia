@@ -2,7 +2,4 @@
 
 namespace App\DTOs;
 
-abstract class BaseDTO
-{
-
-}
+abstract class BaseDTO {}

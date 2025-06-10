@@ -13,6 +13,6 @@ class Voucher extends Model
         'quantity',
         'start_at',
         'end_at',
-        'min_value'
+        'min_value',
     ];
 }

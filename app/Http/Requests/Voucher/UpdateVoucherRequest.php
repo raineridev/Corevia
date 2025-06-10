@@ -28,7 +28,7 @@ class UpdateVoucherRequest extends FormRequest
             'quantity' => 'integer',
             'minimum_value' => 'integer',
             'start_at' => 'date',
-            'end_at' =>  'date',
+            'end_at' => 'date',
         ];
     }
 }

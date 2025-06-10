@@ -2,17 +2,14 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Variant;
-use App\Http\Services\VariantService;
 use App\Http\Requests\StoreVariantRequest;
 use App\Http\Requests\UpdateVariantRequest;
-
-
+use App\Http\Services\VariantService;
+use App\Models\Variant;
 
 class VariantController extends Controller
 {
     public function __construct(variantService $variantService) {}
-
 
     /**
      * Display a listing of the resource.
@@ -28,6 +25,7 @@ class VariantController extends Controller
     public function store(StoreVariantRequest $request)
     {
         $voucher = $this->variantService->store($request->toDTO());
+
         return $voucher;
     }
 
@@ -37,6 +35,7 @@ class VariantController extends Controller
     public function show(Variant $voucher)
     {
         $voucher = $this->variantService->find($voucher->id);
+
         return $voucher;
     }
 
@@ -46,6 +45,7 @@ class VariantController extends Controller
     public function update(UpdateVariantRequest $request, Voucher $voucher)
     {
         $voucher = $this->variantService->find($voucher->id, $request);
+
         return $voucher;
     }
 
@@ -53,8 +53,9 @@ class VariantController extends Controller
      * Remove the specified resource from storage.
      */
     public function destroy(Variant $voucher)
-    { 
+    {
         $voucher = $this->variantService->delete($voucher->id);
+
         return $voucher;
     }
 }

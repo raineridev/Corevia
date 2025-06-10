@@ -2,7 +2,6 @@
 
 namespace App\Http\Requests;
 
-use App\DTOs\Products\ProductUpdateData;
 use Illuminate\Foundation\Http\FormRequest;
 
 class UpdateProductRequest extends FormRequest
@@ -25,7 +24,7 @@ class UpdateProductRequest extends FormRequest
         return [
             'name' => 'max:255|',
             'active' => 'boolean',
-            'price' =>  "required |numeric|regex:/^\d+(\.\d{1,2})?$/|gt:0",
+            'price' => "required |numeric|regex:/^\d+(\.\d{1,2})?$/|gt:0",
         ];
     }
 }

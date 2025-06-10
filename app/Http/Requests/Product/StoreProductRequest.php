@@ -25,11 +25,11 @@ class StoreProductRequest extends FormRequest
         return [
             'name' => 'string|required|max:255|',
             'active' => 'boolean',
-            'price' =>  "required |numeric|regex:/^\d+(\.\d{1,2})?$/|gt:0",
+            'price' => "required |numeric|regex:/^\d+(\.\d{1,2})?$/|gt:0",
         ];
     }
 
-    public function toDTO() : ProductData
+    public function toDTO(): ProductData
     {
         $data = $this->validated();
 

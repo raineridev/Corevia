@@ -8,6 +8,7 @@ use App\Http\Repositories\Eloquent\ProductRepository;
 class ProductService
 {
     public function __construct(private ProductRepository $productRepository) {}
+
     public function all()
     {
         return $this->productRepository->all();
@@ -22,6 +23,7 @@ class ProductService
     {
         return $this->productRepository->find($id);
     }
+
     public function update(int $id, array $data)
     {
         return $this->productRepository->update($id, $data);
