@@ -22,8 +22,7 @@ class UpdateStockRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'name' =>  'string|max:255',
-            'price' =>  "numeric|regex:/^\d+(\.\d{1,2})?$/|gt:0",
+            'quantity' => 'numeric|min:1',
         ];
     }
 }

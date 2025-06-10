@@ -23,6 +23,7 @@ class UpdateVariantRequest extends FormRequest
     {
         return [
             'name' =>  'string|max:255',
+            'price' =>  "numeric|regex:/^\d+(\.\d{1,2})?$/|gt:0",
         ];
     }
 }
