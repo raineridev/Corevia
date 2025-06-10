@@ -26,7 +26,6 @@ class StoreProductRequest extends FormRequest
             'name' => 'string|required|max:255|',
             'active' => 'boolean',
             'price' =>  "required |numeric|regex:/^\d+(\.\d{1,2})?$/|gt:0",
-            'stock' => 'integer|required',
         ];
     }
 
