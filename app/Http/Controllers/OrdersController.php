@@ -2,9 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Orders;
-use App\Http\Requests\StoreOrdersRequest;
-use App\Http\Requests\UpdateOrdersRequest;
+use App\Models\Order;
+use App\Http\Requests\Order\StoreOrderRequest;
+use App\Http\Requests\Order\UpdateOrderRequest;
 
 class OrdersController extends Controller
 {
@@ -19,7 +19,7 @@ class OrdersController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(StoreOrdersRequest $request)
+    public function store(StoreOrderRequest $request)
     {
         //
     }
@@ -27,7 +27,7 @@ class OrdersController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Orders $orders)
+    public function show(Order $orders)
     {
         //
     }
@@ -35,7 +35,7 @@ class OrdersController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(UpdateOrdersRequest $request, Orders $orders)
+    public function update(UpdateOrderRequest $request, Order $orders)
     {
         //
     }
@@ -43,7 +43,7 @@ class OrdersController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Orders $orders)
+    public function destroy(Order $orders)
     {
         //
     }
