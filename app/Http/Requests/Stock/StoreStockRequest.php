@@ -22,9 +22,9 @@ class StoreStockRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'name' =>  'required|string|max:255',
-            'price' =>  "required |numeric|regex:/^\d+(\.\d{1,2})?$/|gt:0",
+            'quantity' => 'required|numeric|min:1',
             'product_id' =>  'required|exists:products,id',
+            'variant_id' =>  'exists:variants,id',
         ];
     }
 }
