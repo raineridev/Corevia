@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Requests;
+namespace App\Http\Requests\Voucher;
 
 use App\DTOs\VoucherData;
 use Illuminate\Contracts\Validation\ValidationRule;

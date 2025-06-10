@@ -1,17 +1,17 @@
 <?php
 
-namespace App\Http\Requests;
+namespace App\Http\Requests\Order;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class UpdateVoucherRequest extends FormRequest
+class StoreOrderRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
      */
     public function authorize(): bool
     {
-        return true;
+        return false;
     }
 
     /**
@@ -22,13 +22,7 @@ class UpdateVoucherRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'active' => 'boolean',
-            'name' => 'max:255|',
-            'code' => 'max:255',
-            'quantity' => 'integer',
-            'minimum_value' => 'integer',
-            'start_at' => 'date',
-            'end_at' =>  'date',
+            //
         ];
     }
 }
