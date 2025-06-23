@@ -2,35 +2,35 @@
 
 namespace App\Http\Services;
 
-use App\DTOs\Products\ProductData;
-use App\Http\Repositories\Eloquent\VariantRepository;
+use App\DTOs\StockData;
+use App\Http\Repositories\Eloquent\StockRepository;
 
-class VariantService
+class StockService
 {
-    public function __construct(private VariantRepository $variantRepository) {}
+    public function __construct(private StockRepository $stockRepository) {}
 
     public function all()
     {
-        return $this->variantRepository->all();
+        return $this->stockRepository->all();
     }
 
-    public function create(ProductData $data)
+    public function create(StockData $data)
     {
-        return $this->variantRepository->create($data);
+        return $this->stockRepository->create($data);
     }
 
     public function find(int $id)
     {
-        return $this->variantRepository->find($id);
+        return $this->stockRepository->find($id);
     }
 
     public function update(int $id, array $data)
     {
-        return $this->variantRepository->update($id, $data);
+        return $this->stockRepository->update($id, $data);
     }
 
     public function delete($id)
     {
-        return $this->variantRepository->delete($id);
+        return $this->stockRepository->delete($id);
     }
 }
