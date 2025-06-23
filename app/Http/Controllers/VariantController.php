@@ -2,14 +2,14 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\StoreVariantRequest;
-use App\Http\Requests\UpdateVariantRequest;
-use App\Http\Services\VariantService;
 use App\Models\Variant;
+use App\Http\Services\VariantService;
+use App\Http\Requests\Variant\StoreVariantRequest;
+use App\Http\Requests\Variant\UpdateVariantRequest;
 
 class VariantController extends Controller
 {
-    public function __construct(variantService $variantService) {}
+    public function __construct(private VariantService $variantService) {}
 
     /**
      * Display a listing of the resource.
@@ -24,38 +24,36 @@ class VariantController extends Controller
      */
     public function store(StoreVariantRequest $request)
     {
-        $voucher = $this->variantService->store($request->toDTO());
-
-        return $voucher;
+        $variant = $this->variantService->create($request->toDTO());
+        return $variant;
     }
 
     /**
      * Display the specified resource.
      */
-    public function show(Variant $voucher)
+    public function show(Variant $variant)
     {
-        $voucher = $this->variantService->find($voucher->id);
-
-        return $voucher;
+        $variant = $this->variantService->find($variant->id);
+        return $variant;
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(UpdateVariantRequest $request, Voucher $voucher)
+    public function update(UpdateVariantRequest $request, Variant $variant)
     {
-        $voucher = $this->variantService->find($voucher->id, $request);
 
-        return $voucher;
+        $variant = $this->variantService->update($variant->id, $request->validated());
+
+        return $variant;
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Variant $voucher)
+    public function destroy(Variant $variant)
     {
-        $voucher = $this->variantService->delete($voucher->id);
-
-        return $voucher;
+        $variant = $this->variantService->delete($variant->id);
+        return $variant;
     }
 }
