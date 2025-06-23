@@ -44,7 +44,7 @@ class VoucherController extends Controller
      */
     public function update(UpdateVoucherRequest $request, Voucher $voucher)
     {
-        $voucher = $this->voucherService->find($voucher->id, $request);
+        $voucher = $this->voucherService->update($voucher->id, $request->validated());
 
         return $voucher;
     }
