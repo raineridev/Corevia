@@ -2,7 +2,7 @@
 
 namespace App\Http\Services;
 
-use App\DTOs\Products\ProductData;
+use App\DTOs\VariantData;
 use App\Http\Repositories\Eloquent\VariantRepository;
 
 class VariantService
@@ -14,7 +14,7 @@ class VariantService
         return $this->variantRepository->all();
     }
 
-    public function create(ProductData $data)
+    public function create(VariantData $data)
     {
         return $this->variantRepository->create($data);
     }
