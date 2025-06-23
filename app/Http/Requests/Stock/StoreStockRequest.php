@@ -1,7 +1,8 @@
 <?php
 
-namespace App\Http\Requests;
+namespace App\Http\Requests\Stock;
 
+use App\DTOs\StockData;
 use Illuminate\Foundation\Http\FormRequest;
 
 class StoreStockRequest extends FormRequest
@@ -22,9 +23,20 @@ class StoreStockRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'quantity' => 'required|numeric|min:1',
+            'quantity' => 'required|integer|min:1',
             'product_id' => 'required|exists:products,id',
             'variant_id' => 'exists:variants,id',
         ];
+    }
+
+    public function toDTO() : StockData
+    {
+        $data = $this->validated();
+
+        return new StockData(
+            quantity: $data['quantity'],
+            productID:  $data['product_id'],
+            variantID:  $data['variant_id'] ?? null,
+        );
     }
 }
