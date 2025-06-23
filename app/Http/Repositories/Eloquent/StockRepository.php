@@ -2,44 +2,43 @@
 
 namespace App\Http\Repositories\Eloquent;
 
+use App\Models\Stock;
 use App\DTOs\BaseDTO;
 use App\Http\Repositories\RepositoryInterface;
-use App\Models\Product;
 use Illuminate\Support\Collection;
 
 class StockRepository implements RepositoryInterface
 {
     public function all(): Collection
     {
-        return Product::all();
+        return Stock::all();
     }
 
-    public function create(BaseDTO $data): Product
+    public function create(BaseDTO $data): Stock
     {
-        return Product::create([
-            'name' => $data->name,
-            'price' => $data->price,
-            'active' => $data->active,
-            'stock' => $data->stock,
+        return Stock::create([
+            'quantity' => $data->quantity,
+            'product_id' => $data->productID,
+            'variant_id' => $data->variantID,
         ]);
     }
 
-    public function find(int $id): ?Product
+    public function find(int $id): ?Stock
     {
-        return Product::findOrFail($id);
+        return Stock::findOrFail($id);
     }
 
-    public function update(int $id, array $data): Product
+    public function update(int $id, array $data): Stock
     {
-        $product = Product::findOrFail($id);
-        $product->update($data);
+        $stock = Stock::findOrFail($id);
+        $stock->update($data);
 
-        return $product;
+        return $stock;
     }
 
     public function delete(int $id): void
     {
-        $product = Product::findOrFail($id);
-        $product->delete();
+        $stock = Stock::findOrFail($id);
+        $stock->delete();
     }
 }
