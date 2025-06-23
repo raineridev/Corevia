@@ -3,10 +3,9 @@
 namespace App\Http\Repositories\Eloquent;
 
 use App\DTOs\BaseDTO;
-use App\Http\Repositories\RepositoryInterface;
 use App\Models\Variant;
 use Illuminate\Support\Collection;
-
+use App\Http\Repositories\RepositoryInterface;
 class VariantRepository implements RepositoryInterface
 {
     public function all(): Collection
@@ -18,9 +17,8 @@ class VariantRepository implements RepositoryInterface
     {
         return Variant::create([
             'name' => $data->name,
+            'product_id' => $data->productId,
             'price' => $data->price,
-            'active' => $data->active,
-            'stock' => $data->stock,
         ]);
     }
 
