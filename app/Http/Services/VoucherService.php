@@ -6,7 +6,7 @@ use App\DTOs\Products\ProductData;
 
 class VoucherService
 {
-    public function __construct(VoucherRepository $voucherRepository) {}
+    public function __construct(private VoucherRepository $voucherRepository) {}
 
     public function all()
     {
