@@ -20,7 +20,6 @@ class ProductRepository implements RepositoryInterface
             'name' => $data->name,
             'price' => $data->price,
             'active' => $data->active,
-            'stock' => $data->stock,
         ]);
     }
 
@@ -31,7 +30,6 @@ class ProductRepository implements RepositoryInterface
 
     public function update(int $id, array $data): Product
     {
-        $product = Product::findOrFail($id);
         $product->update($data);
 
         return $product;
