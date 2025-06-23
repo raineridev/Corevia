@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Requests;
+namespace App\Http\Requests\Product;
 
 use App\DTOs\Products\ProductData;
 use Illuminate\Foundation\Http\FormRequest;
@@ -36,8 +36,7 @@ class StoreProductRequest extends FormRequest
         return new ProductData(
             name: $data['name'],
             active: $data['active'] ?? true,
-            price: $data['price'],
-            stock: $data['stock'],
+            price: $data['price']
         );
     }
 }
