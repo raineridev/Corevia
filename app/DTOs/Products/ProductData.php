@@ -10,6 +10,5 @@ class ProductData extends BaseDTO
         public bool $active,
         public string $name,
         public float $price,
-        public int $stock
     ) {}
 }
